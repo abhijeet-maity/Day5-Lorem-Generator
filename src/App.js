@@ -5,24 +5,24 @@ import { useState } from 'react';
 
 function App() {
  
-  let [text,setText]=useState(0);
+  let [numOfParagraphs,setNumOfPara]=useState(0);
   let [para,setPara]=useState([]);
-  let fun=(e)=>{
+  let inputNumber=(e)=>{
     if(e.target.value>=0){
-      setText(e.target.value);
+      setNumOfPara(e.target.value);
     }
    
    
   }
   let btn=()=>{
-    if(text>8){
+    if(numOfParagraphs>8){
       alert(" Ayyo ! you are demanding very much paragraph in one go, kindly take little litlle 😀")
    }
-      let a=data.filter((e,index)=>{
-        return text>index;
+    let paraSectionOnUI = data.filter((e,index)=>{
+      return numOfParagraphs>index;
     })
    
-    setPara(a)
+    setPara(paraSectionOnUI)
  
   }
 
@@ -32,7 +32,7 @@ function App() {
       <p className='heading'>TIRED OF BORING LOREM IPSUM?</p>
       <div className='inp-box'>
       <p className='para'>Paragraphs:</p>
-      <input className='inp' type='number' onChange={fun} value={text}/>
+      <input className='inp' type='number' onChange={inputNumber} value={numOfParagraphs}/>
       <button onClick={btn}>Generate</button>
       </div>
       {
@@ -40,6 +40,8 @@ function App() {
           <p className='para1' key={index}>{e.title}</p>
         ))
       }
+
+
     </div>
   );
 }
